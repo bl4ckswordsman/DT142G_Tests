@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:include src="header.xhtml" />
+
+<h:body>
+    <br> </br>
+    <h1>Hello, JSF with Facelets!</h1>
+    <h:outputText value="#{helloBean.message}" />
+    <br/>
+    <h:graphicImage value="#{helloBean.imageLink}" style="width: 100px" />
+    <br/> <br/>
+    <!-- add a link to members.xhtml -->
+    <h:link outcome="members" value="Members" />
+
+</h:body>
+</html>
