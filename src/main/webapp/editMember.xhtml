@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:include src="header.xhtml"/>
+
+<h:body>
+    <h:form>
+        <h1 class="text-center mb-4">Edit Member</h1>
+        <div class="container">
+            <h:panelGrid columns="2">
+                <h:outputLabel for="firstName" value="First Name:"/>
+                <h:inputText id="firstName" value="#{memberBean.memberToEdit.firstName}"/>
+
+                <h:outputLabel for="lastName" value="Last Name:"/>
+                <h:inputText id="lastName" value="#{memberBean.memberToEdit.lastName}"/>
+
+                <h:outputLabel for="email" value="Email:"/>
+                <h:inputText id="email" value="#{memberBean.memberToEdit.email}"/>
+
+                <h:outputLabel for="phone" value="Phone:"/>
+                <h:inputText id="phone" value="#{memberBean.memberToEdit.phone}"/>
+
+                <h:outputLabel for="address" value="Address:"/>
+                <h:inputText id="address" value="#{memberBean.memberToEdit.address}"/>
+            </h:panelGrid>
+
+            <h:commandButton value="Submit" action="#{memberBean.saveOrUpdateMember}"/>
+        </div>
+    </h:form>
+</h:body>
+
+</html>
