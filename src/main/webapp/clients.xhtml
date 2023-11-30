@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:include src="header.xhtml"/>
+
+<h:body>
+    <h:form>
+        <h1 class="text-center mb-4">Client List</h1>
+        <div class="container">
+            <p class="text-muted">Number of clients: #{clientBean.clients.size()}</p>
+            <h:commandButton value="Add client" action="#{clientBean.addClient}" styleClass="btn btn-primary m-1"/>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <ui:repeat value="#{clientBean.clients}" var="client">
+                        <tr>
+                            <td>#{client.clientID}</td>
+                            <td>#{client.name}</td>
+                            <td>#{client.phone}</td>
+                            <td>#{client.email}</td>
+                            <td>#{client.date}</td>
+                            <td>
+                                <h:commandButton value="Edit" action="#{clientBean.editClient(client.clientID)}"
+                                                 styleClass="btn btn-primary m-1"/>
+                                <!-- include the deleteModal.xhtml -->
+                                <ui:include src="includes/deleteModal.xhtml">
+                                    <ui:param name="entityID" value="#{client.clientID}"/>
+                                    <ui:param name="bean" value="#{clientBean}"/>
+                                    <ui:param name="entityType" value="client"/>
+                                </ui:include>
+                                <!-- Delete Button -->
+                                <button type="button" class="btn btn-danger m-1" data-toggle="modal"
+                                        data-target="#deleteConfirmationModal#{client.clientID}">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </ui:repeat>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+
+</html>
