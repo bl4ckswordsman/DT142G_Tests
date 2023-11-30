@@ -38,7 +38,9 @@
                                                  styleClass="btn btn-primary m-1"/>
                                 <!-- include the deleteModal.xhtml -->
                                 <ui:include src="includes/deleteModal.xhtml">
-                                    <ui:param name="memberID" value="#{member.memberID}"/>
+                                    <ui:param name="entityID" value="#{member.memberID}"/>
+                                    <ui:param name="bean" value="#{memberBean}"/>
+                                    <ui:param name="entityType" value="member"/>
                                 </ui:include>
                                 <!-- Delete Button -->
                                 <button type="button" class="btn btn-danger m-1" data-toggle="modal"
