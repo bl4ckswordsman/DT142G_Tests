@@ -61,8 +61,6 @@ CREATE TABLE IF NOT EXISTS Cases
     FOREIGN KEY (GuitarID) REFERENCES Guitar (GuitarID) ON DELETE CASCADE
 );
 
-With Java facelets xhtml injection, and the following mysql table, display the ShopOwnerAvailability in calendar in a bootstrap page, with google calendar api. Implement all the code for that with the CalendarBean class, Calendar class , calendar.xhtml and anything else needed.
-
     CREATE TABLE IF NOT EXISTS ShopOwnerAvailability
     (
     AvailabilityID INT PRIMARY KEY AUTO_INCREMENT,
