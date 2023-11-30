@@ -5,6 +5,7 @@ import jakarta.annotation.Resource;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 
 import javax.sql.DataSource;
@@ -19,7 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Named
-@SessionScoped
+@ViewScoped
 public class ClientBean implements Serializable {
     @Resource(name = "projectdb")
     private DataSource dataSource;
@@ -29,12 +30,11 @@ public class ClientBean implements Serializable {
 
     @PostConstruct
     public void init() {
+        // Initialize clientToEdit
+        clientToEdit = new Client();
         // Load member data from the database during bean initialization
         loadClients();
     }
-
-    // Encapsulate the logic for mapping a row in the result set to a Member object
-
 
 
     private void loadClients() {
@@ -55,7 +55,7 @@ public class ClientBean implements Serializable {
         }
     }
 
-
+    // Encapsulate the logic for mapping a row in the result set to a Member object
     private Client mapResultSetToClient(ResultSet resultSet) throws SQLException {
         Client client = new Client();
         client.setClientID(resultSet.getInt("CLIENT_ID"));
@@ -68,7 +68,7 @@ public class ClientBean implements Serializable {
 
     private Client clientToEdit;
 
-    public String editClient(int clientID) {
+    public void editClient(int clientID) {
         try (Connection connection = dataSource.getConnection()) {
             String sql = "SELECT * FROM CLIENT WHERE CLIENT_ID = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -82,7 +82,6 @@ public class ClientBean implements Serializable {
         } catch (SQLException e) {
             Logger.getLogger(ClientBean.class.getName()).log(Level.SEVERE, "SQL Exception", e);
         }
-        return "editClient"; // Return the name of the page where the user can edit the member data
     }
 
     public Client getClientToEdit() {
@@ -113,10 +112,9 @@ public class ClientBean implements Serializable {
         return "clients"; // Return the name of the page where the user can see the member list
     }
 
-    public String addClient() {
+    public void addClient() {
         clientToEdit = new Client(); // Create a new Member object
         clientToEdit.setClientID(-1); // Set memberID to -1 to represent a new member
-        return "editClient"; // Return the name of the page where the user can input the data for the new member
     }
 
 

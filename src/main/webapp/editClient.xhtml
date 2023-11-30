@@ -3,11 +3,10 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<ui:include src="header.xhtml"/>
+<ui:include src="header_without_navbar.xhtml"/>
 
 <h:body>
     <h:form>
-        <h1 class="text-center mb-4">Edit Client</h1>
         <div class="container">
             <h:panelGrid columns="2">
                 <h:outputLabel for="name" value="Name:"/>
@@ -21,8 +20,7 @@
 
             </h:panelGrid>
 
-            <h:commandButton value="Submit" action="#{clientBean.saveOrUpdateClient}"/>
-        </div>
+            <h:commandButton value="Submit" action="#{clientBean.saveOrUpdateClient}"/>        </div>
     </h:form>
 </h:body>
 
