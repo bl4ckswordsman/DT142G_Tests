@@ -1,5 +1,7 @@
 package com.example.javaprojecttests1;
 
+import com.example.javaprojecttests1.member.Member;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
