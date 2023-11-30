@@ -9,4 +9,8 @@
     <persistence-unit name="GuitarshopSQL1" transaction-type="JTA">
         <jta-data-source>mysql_guitarshop1</jta-data-source>
     </persistence-unit>
+    <!-- DB connection works without this apparently:
+    <persistence-unit name="ProjectDB" transaction-type="JTA">
+        <jta-data-source>projectdb</jta-data-source>
+    </persistence-unit> -->
 </persistence>
