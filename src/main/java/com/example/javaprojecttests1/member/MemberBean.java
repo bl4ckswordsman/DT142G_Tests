@@ -1,8 +1,7 @@
-package com.example.javaprojecttests1;
+package com.example.javaprojecttests1.member;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -124,7 +123,7 @@ public class MemberBean implements Serializable {
     }
 
 
-    public String deleteMember(int memberID) {
+    public String deleteEntity(int memberID) {
         try (Connection connection = dataSource.getConnection()) {
             String sql = "DELETE FROM Member WHERE MemberID = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {

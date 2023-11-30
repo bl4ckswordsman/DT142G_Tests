@@ -1,4 +1,4 @@
-package com.example.javaprojecttests1;
+package com.example.javaprojecttests1.member;
 
 import java.io.Serializable;
 
